@@ -1,0 +1,36 @@
+ORIG_PN="wxsqlite3"
+WX_VERSION=2.8
+inherit wxwidgets
+
+DESCRIPTION="wxWidgets SQLite3 bindings"
+HOMEPAGE="http://wxcode.sourceforge.net/components/${ORIG_PN}/"
+SRC_URI="mirror://sourceforge/wxcode/${ORIG_PN}-${PV}.tar.gz"
+
+PKG_NAMES="${PN} ${PN}-devel"
+PKG_HINTS='setup devel'
+PKG_CONTENTS[0]='usr/bin/ usr/share/'
+PKG_CONTENTS[1]='usr/include/ usr/lib/'
+
+src_compile() {
+	lndirs
+	CYGCONF_SOURCE=${B}
+
+	cd ${B}
+	cygconf --with-wx-config=${WX_CONFIG} --with-sqlite3-prefix=/usr
+	cygmake -j1 LDFLAGS_GUI=
+}
+
+src_test() {
+	cd ${B}
+	PATH="${B}/lib:$PATH" ./samples/minimal.exe
+}
+
+src_install() {
+	cd ${B}
+	cyginstall
+	dodir /usr/bin
+	mv ${D}/usr/lib/*.dll ${D}/usr/bin/
+
+	dodir /usr/include/wx-${WX_VERSION}
+	mv ${D}/usr/include/wx ${D}/usr/include/wx-${WX_VERSION}/
+}
