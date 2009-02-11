@@ -1,15 +1,13 @@
-ORIG_PN="wxsqlite3"
 WX_VERSION=2.8
 inherit wxwidgets
 
 DESCRIPTION="wxWidgets SQLite3 bindings"
-HOMEPAGE="http://wxcode.sourceforge.net/components/${ORIG_PN}/"
-SRC_URI="mirror://sourceforge/wxcode/${ORIG_PN}-${PV}.tar.gz"
+HOMEPAGE="http://wxcode.sourceforge.net/components/${PN}/"
+SRC_URI="mirror://sourceforge/wxcode/${P}.tar.gz"
 
-PKG_NAMES="${PN} ${PN}-devel"
-PKG_HINTS='setup devel'
-PKG_CONTENTS[0]='usr/bin/ usr/share/'
-PKG_CONTENTS[1]='usr/include/ usr/lib/'
+PKG_NAMES="${PN} libwxsqlite3_2.8_0 libwxsqlite3_2.8-devel"
+libwxsqlite3_2_8_0_CONTENTS='usr/bin/*-2.8-0.dll usr/share/'
+libwxsqlite3_2_8_devel_CONTENTS='usr/include/ usr/lib/'
 
 src_compile() {
 	lndirs

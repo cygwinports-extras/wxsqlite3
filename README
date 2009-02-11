@@ -1,4 +1,4 @@
-wx28-sqlite3
+wxsqlite3
 ------------------------------------------
 wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x database 
 and is specifically designed for use in programs based on the wxWidgets 
@@ -6,13 +6,14 @@ library.
 
 Runtime requirements:
   cygwin-1.5.25-15
-  libsqlite3_0-3.5.9-1
-  wx28-base-2.8.8.0-1
+  libsqlite3_0-3.6.10-1
+  libwxbase2.8_0-2.8.9.1-2
+  libwxgtk2.8_0-2.8.9.1-2
 
 Build requirements:
 (besides corresponding -devel packages)
-  binutils-20060817-1
-  cygport-0.3.11-1
+  binutils-20080624-2
+  cygport-0.4.3-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
   gcc-g++-3.4.4-3
@@ -28,27 +29,27 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack wx28-sqlite3-1.8.5-X-src.tar.bz2
+  unpack wxsqlite3-1.9.4-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./wx28-sqlite3-1.8.5-X.cygport all
+  cygport ./wxsqlite3-1.9.4-X.cygport all
 
 This will create:
-  /usr/src/wx28-sqlite3-1.8.5-X-src.tar.bz2
-  /usr/src/wx28-sqlite3-1.8.5-X.tar.bz2
-  /usr/src/wx28-sqlite3-devel-1.8.5-X.tar.bz2
+  /usr/src/wxsqlite3-1.9.4-X-src.tar.bz2
+  /usr/src/libwxsqlite3_2.8-devel-1.9.4-X.tar.bz2
+  /usr/src/libwxsqlite3_2.8_0-1.9.4-X.tar.bz2
 
 -------------------------------------------
 
 Files included in the binary packages:
 
-(wx28-sqlite3)
+(wxsqlite3)
   /usr/bin/cygwxcode_gtk2_wxsqlite3-2.8-0.dll
-  /usr/share/doc/wx28-sqlite3-1.8.5/LICENCE.txt
-  /usr/share/doc/wx28-sqlite3-1.8.5/README.txt
+  /usr/share/doc/wxsqlite3-1.9.4/LICENCE.txt
+  /usr/share/doc/wxsqlite3-1.9.4/README.txt
 
-(wx28-sqlite3-devel)
+(wxsqlite3-devel)
   /usr/include/wx-2.8/wx/wxsqlite3.h
   /usr/include/wx-2.8/wx/wxsqlite3def.h
   /usr/include/wx-2.8/wx/wxsqlite3dyn.h
@@ -58,6 +59,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 1.9.4-1 -----
+Version bump.
 
 ----- version 1.8.5-1 -----
 Version bump.

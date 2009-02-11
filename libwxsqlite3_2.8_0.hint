@@ -1,7 +1,7 @@
 category: Database
-requires: cygwin libsqlite3-devel wx28-devel wx28-sqlite3
-external-source: wx28-sqlite3
-sdesc: "wxWidgets SQLite3 wrapper (development)"
+requires: cygwin libsqlite3_0 libwxbase2.8_0 libwxgtk2.8_0
+external-source: wxsqlite3
+sdesc: "wxWidgets SQLite3 wrapper (runtime)"
 ldesc: "wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x 
 database and is specifically designed for use in programs based on the 
 wxWidgets library."
