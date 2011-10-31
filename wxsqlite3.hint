@@ -1,5 +1,6 @@
 category: Database
-sdesc: "wxWidgets SQLite3 wrapper (sources)"
+requires: libgcc1 libsqlite3_0 libstdc++6 libwx_baseu2.8_0 libwx_gtk2u2.8_0 libwxsqlite3_2.8_0
+sdesc: "wxGTK SQLite3 database browser"
 ldesc: "wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x 
 database and is specifically designed for use in programs based on the 
 wxWidgets library."

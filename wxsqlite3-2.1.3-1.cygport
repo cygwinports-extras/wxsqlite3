@@ -6,26 +6,43 @@ HOMEPAGE="http://wxcode.sourceforge.net/components/${PN}/"
 SRC_URI="mirror://sourceforge/wxcode/${P}.tar.gz"
 
 PKG_NAMES="${PN} libwxsqlite3_2.8_0 libwxsqlite3_2.8-devel"
-libwxsqlite3_2_8_0_CONTENTS='usr/bin/*-2.8-0.dll usr/share/'
+wxsqlite3_CONTENTS="etc/ usr/bin/*.exe usr/share/"
+libwxsqlite3_2_8_0_CONTENTS='usr/bin/*-2.8-0.dll'
 libwxsqlite3_2_8_devel_CONTENTS='usr/include/ usr/lib/'
+
+CYGPORT_USE_UNSTABLE_API=1
+src_unpack_hook() {
+	rm -f configure Makefile.in
+	ln -s configure29 configure
+	ln -s Makefile29.in Makefile.in
+}
 
 src_compile() {
 	lndirs
 	CYGCONF_SOURCE=${B}
 
 	cd ${B}
-	cygconf --with-wx-config=${WX_CONFIG} --with-sqlite3-prefix=/usr
+	cygconf --with-sqlite3-prefix=/usr
 	cygmake -j1 LDFLAGS_GUI=
 }
 
 src_test() {
 	cd ${B}
-	PATH="${B}/lib:$PATH" ./samples/minimal.exe
+	echo q | PATH="${B}/lib:$PATH" ./samples/minimal.exe
 }
 
 src_install() {
 	cd ${B}
 	cyginstall
+
+	newbin dbadmin/dbadmin.exe wxsqlite3.exe
+	for i in 32 128
+	do
+		insinto /usr/share/icons/hicolor/${i}x${i}/apps
+		newins ${S}/dbadmin/images/logo${i}.xpm wxsqlite3.xpm
+	done
+	make_desktop_entry wxsqlite3 wxSQLite3 wxsqlite3 "Development;Database;GTK"
+
 	dodir /usr/bin
 	mv ${D}/usr/lib/*.dll ${D}/usr/bin/
 
